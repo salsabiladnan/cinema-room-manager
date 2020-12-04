@@ -1,17 +1,27 @@
 package cinema;
+import java.util.Scanner;
 
 public class Cinema {
 
     public static void main(String[] args) {
         // Write your code here
-        System.out.println("Cinema:");
-        System.out.println("  1 2 3 4 5 6 7 8");
-        System.out.println("1 S S S S S S S S");
-        System.out.println("2 S S S S S S S S");
-        System.out.println("3 S S S S S S S S");
-        System.out.println("4 S S S S S S S S");
-        System.out.println("5 S S S S S S S S");
-        System.out.println("6 S S S S S S S S");
-        System.out.println("7 S S S S S S S S");
+        Scanner scanner = new Scanner (System.in);
+        
+        System.out.println("Enter the number of rows:");
+        int rows = scanner.nextInt();
+        System.out.println("Enter the number of seats in each row:");
+        int seats = scanner.nextInt();
+        
+        int total_seats = rows * seats;
+        int total_income = 0;
+        if (total_seats <= 60) {
+            total_income = total_seats * 10;
+        } else {
+            int first = rows / 2;
+            int second = rows - first;
+            total_income = first * seats * 10 + second * seats * 8;
+        }
+        System.out.println("Total income:");
+        System.out.println("$" + total_income);
     }
 }
